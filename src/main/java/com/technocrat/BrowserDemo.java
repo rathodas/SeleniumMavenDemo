@@ -12,7 +12,7 @@ public class BrowserDemo {
 	public static void main(String[] args) {
 		
 		BrowserDemo browserDemo = new BrowserDemo();
-		browserDemo.launchBrowser("firefox");
+		browserDemo.launchBrowser("edge");
 		
 	}
 	
