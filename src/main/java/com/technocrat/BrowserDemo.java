@@ -11,15 +11,14 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class BrowserDemo {
 
 	public static void main(String[] args) throws Exception {
-		
+		WebDriver driver = null;
 		BrowserDemo browserDemo = new BrowserDemo();
-		browserDemo.launchBrowser("chrome");
+		browserDemo.launchBrowser(driver, "chrome");
 		
 	}
 	
-	public void launchBrowser(String browserType) throws Exception {
-				
-		WebDriver driver = null;
+	public WebDriver launchBrowser(WebDriver driver, String browserType) throws Exception {
+
 		if(browserType.equalsIgnoreCase("chrome")) {
 			driver = new ChromeDriver();
 			
@@ -30,30 +29,36 @@ public class BrowserDemo {
 			driver = new EdgeDriver();
 			
 		}
-		
 		driver.manage().window().maximize();
+		return driver;
 		
-		driver.get("http://google.com");
+		/*
+		 * driver.manage().window().maximize();
+		 * 
+		 * driver.get("http://google.com");
+		 * 
+		 * driver.navigate().to("https://github.com/");
+		 * 
+		 * driver.findElement(By.linkText("Sign in")).click(); Thread.sleep(5000);
+		 * //driver.navigate().back();
+		 * driver.findElement(By.name("login")).sendKeys("rathodanil.s@gmail.com");
+		 * Thread.sleep(5000); //driver.navigate().forward(); Thread.sleep(5000);
+		 * 
+		 * driver.findElement(By.id("password")).sendKeys("abcd");
+		 * driver.findElement(By.name("commit")).click();
+		 * 
+		 * String message =
+		 * driver.findElement(By.xpath("//*[@id='js-flash-container']/div/div/div")).
+		 * getText(); System.out.println(message);
+		 * 
+		 * driver.navigate().refresh(); Thread.sleep(5000); driver.close();
+		 */
 		
-		driver.navigate().to("https://github.com/");
-		
-		driver.findElement(By.linkText("Sign in")).click();
-		Thread.sleep(5000);
-		//driver.navigate().back();
-		driver.findElement(By.name("login")).sendKeys("rathodanil.s@gmail.com");
-		Thread.sleep(5000);
-		//driver.navigate().forward();
-		Thread.sleep(5000);
-		
-		driver.findElement(By.id("password")).sendKeys("abcd");
-		driver.findElement(By.name("commit")).click();
-		
-		String message = driver.findElement(By.xpath("//*[@id='js-flash-container']/div/div/div")).getText();
-		System.out.println(message);
-		
-		driver.navigate().refresh();
-		Thread.sleep(5000);
-		driver.close();
-		
+	}
+	
+	public void teardown(WebDriver driver) {
+		if(driver!=null) {
+			driver.quit();
+		}
 	}
 }
