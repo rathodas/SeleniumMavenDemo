@@ -20,6 +20,8 @@ public class BrowserDemo {
 	public WebDriver launchBrowser(WebDriver driver, String browserType) throws Exception {
 
 		if(browserType.equalsIgnoreCase("chrome")) {
+			String projectPath = System.getProperty("user.dir"); 
+			System.setProperty("webdriver.chrome.driver", projectPath+"\\drivers\\chromedriver_win32\\chromedriver.exe");
 			driver = new ChromeDriver();
 			
 		}else if(browserType.equalsIgnoreCase("firefox")) {
