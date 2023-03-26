@@ -11,6 +11,9 @@ import org.openqa.selenium.chrome.ChromeOptions;
 public class DemoLocators {
 
 	public static void main(String[] args) throws Exception {
+		String projectPath = System.getProperty("user.dir"); 
+		System.setProperty("webdriver.chrome.driver", projectPath+"\\drivers\\chromedriver_win32\\chromedriver.exe");
+		
 		ChromeOptions option = new ChromeOptions();
 		option.addArguments("--remote-allow-origins=*");
 		
